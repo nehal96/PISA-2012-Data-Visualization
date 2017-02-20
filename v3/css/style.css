@@ -6,8 +6,38 @@ body {
 }
 
 .heading {
-  padding: 1.5rem 1.5rem;
+  padding: 16px 16px;
   text-align: center;
+  background-color: #fd9191;
+}
+
+.main{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.axis-label {
+  font-weight: bold;
+}
+
+#navbar {
+  fill: #2B85B3;
+}
+
+#navigation {
+  padding-bottom: 8px;
+  padding-top: 8px;
+  background-color: #c9fdd7;
+}
+
+#left-col {
+  background-color: #fddd8a;
+  padding-top: 8px;
+}
+
+#right-col {
+  background-color: #fddd8a;
+  padding-top: 8px;
 }
 
 #prev-button {
@@ -18,85 +48,22 @@ body {
   padding-left: 5px;
 }
 
-#navbar {
-  fill: #2B85B3;
-}
-
-#plot {
-  position: absolute;
-  top: 20px;
-}
-/* -------------------- */
-
-/*
-#wrapper {
-  width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
-}
-
-#title {
-  width: 1000px;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 209px;
-}
-
 #chart {
-  top:175;
+  background-color: #fff8d2;
 }
 
-#countryLabel {
-  font-size: 40px;
-  fill: #C0C0C0;
+#plot{
+  margin: auto;
+  width: 50%;
+  height: 50%;
 }
 
-#navigation {
-  position: absolute;
-  top: 70px;
-  left: 250px;
-  width: 800px;
+#xAxis{
+  width: 50%;
 }
 
-#navigation #prev {
-	float: left;
-	width: 30px;
-	height: 30px;
-	background-image:url("../images/prev_light.png");
-
-}
-
-#navigation #next {
-	float: left;
-	width: 30px;
-	height: 30px;
-	margin-left:10px;
-	background-image:url("../images/next.png");
-}
-
-#menu {
-  position: absolute;
-  top: 160px;
-  left: 15px;
-  width: 120px;
-  text-align: left;
-  opacity:1;
-  transition:opacity 1s linear;
-}
-
-ul {
-  list-style: none;
-  font-size: 12px;
-  padding: 0;
-  margin-top: 3px;
-}
-
-li {
-  cursor: pointer;
-  padding-bottom: 5px;
-  font-weight: 100%;
+#xLabel{
+  width: 50%;
 }
 
 #tooltip {
@@ -126,6 +93,36 @@ li {
   line-height: 20px;
 }
 
+/* -------------------- */
+
+/*
+
+
+
+#menu {
+  position: absolute;
+  top: 160px;
+  left: 15px;
+  width: 120px;
+  text-align: left;
+  opacity:1;
+  transition:opacity 1s linear;
+}
+
+ul {
+  list-style: none;
+  font-size: 12px;
+  padding: 0;
+  margin-top: 3px;
+}
+
+li {
+  cursor: pointer;
+  padding-bottom: 5px;
+  font-weight: 100%;
+}
+
+
 /* body {
   background-color: #fff;
   font-family: helvetica, sans-serif;
@@ -144,14 +141,12 @@ circle {
   opacity: 0.7;
 }
 
-/*
-path {
-	fill: #CED8B6;
-}
-*/
-
 #xAxis path, #yAxis path, #xAxis line, #yAxis line {
 	stroke: #ccc;
 	fill: none;
 	shape-rendering: crispEdges;
+}
+
+path {
+	fill: #CED8B6;
 }
