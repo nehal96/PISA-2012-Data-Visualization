@@ -2,8 +2,8 @@
 // Main function
 function draw(data) {
   "use strict";
-  var margin = 40,
-      width = 930 - margin,
+  var margin = 59,
+      width = 960 - margin,
       height = 550 - margin,
       OECD_colour = '#3498DB',
       non_OECD_colour = '#F89406';
@@ -108,7 +108,6 @@ function draw(data) {
   var circles = d3.select('svg')
                   .append('g')
                   .attr('id', 'plot')
-                  .attr('transform', 'translate(0, -50)')
                   .selectAll('circle')
                   .data(data)
                   .enter()
@@ -124,17 +123,25 @@ function draw(data) {
       return d['Maths Score'];
   });
 
-  var teacher_salaries_extent = d3.extent(data, function(d) {
+  var teachers_salaries_max = d3.max(data, function(d) {
       return d["Teachers' salaries"];
   });
 
+  var teachers_salaries_min = d3.min(data, function(d) {
+      return d["Teachers' salaries"];
+  });
+
+  //var teacher_salaries_extent = d3.extent(data, function(d) {
+  //    return d["Teachers' salaries"];
+  //});
+
   var math_score_scale = d3.scale.linear()
       .range([height, margin])
-      .domain([math_score_min - 20, math_score_max]);
+      .domain([math_score_min - 50, math_score_max]);
 
   var teacher_salaries_scale = d3.scale.linear()
       .range([margin, width])
-      .domain(teacher_salaries_extent);
+      .domain([0, teachers_salaries_max + 20]);
 
 
   // Building the x- and y-axis
@@ -144,42 +151,39 @@ function draw(data) {
       .ticks(5);
 
   var teacher_salaries_axis = d3.svg.axis()
-      .scale(teacher_salaries_scale);
+      .scale(teacher_salaries_scale)
+      .orient('bottom')
+      .ticks(10);
 
   d3.select('svg')
     .append('g')
     .attr("id", "yAxis")
-    .attr("transform", "translate(" + 60 + ",0)")
+    .attr("transform", "translate(" + 59 + ",0)")
     .call(math_score_axis);
 
   d3.select("svg")
     .append("g")
     .attr("class", "col-lg-1")
     .attr("id", "xAxis")
-    .attr("transform", "translate(0, " + (height) + ")")
+    .attr("transform", "translate(0, " + height + ")")
     .call(teacher_salaries_axis);
 
 
   // X- and y-axis labels
   d3.select('#yAxis')
     .append('text')
+    .attr('class', 'axis-label')
     .attr('id', 'yLabel')
-    .attr('transform', 'translate(-42, 350)rotate(-90)')
+    .attr('transform', 'translate(-42, 315)rotate(-90)')
     .text('Maths Score');
 
   d3.select('#xAxis')
     .append('text')
+    .attr('class', 'axis-label')
     .attr('id', 'xLabel')
-    .attr('transform', 'translate(515, 42)')
+    .attr('transform', 'translate(500, 42)')
     .attr('text-anchor', 'middle')
     .text("Teachers' salaries (as % of GDP per capita)");
-
-
-  // Element for Country name when mouse hovers over point
-  d3.select('svg g#plot')
-    .append('text')
-    .attr('id', 'countryLabel')
-    .attr('transform', 'translate(100, 130)');
 
 
   // Setting the scale for the circle radius
@@ -255,8 +259,8 @@ function draw(data) {
               var coordinates = [0, 0];
               coordinates = d3.mouse(this);
 
-              var xPosition = coordinates[0] + 100;
-              var yPosition = coordinates[1] - 120;
+              var xPosition = coordinates[0] + 150;
+              var yPosition = coordinates[1] - 20;
 
               d3.select('#tooltip')
                 .style('left', xPosition + "px")
