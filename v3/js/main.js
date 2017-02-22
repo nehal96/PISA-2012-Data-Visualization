@@ -174,15 +174,21 @@ function draw(data) {
     .append('text')
     .attr('class', 'axis-label')
     .attr('id', 'yLabel')
-    .attr('transform', 'translate(-42, 315)rotate(-90)')
+    .attr('text-anchor', 'middle')
+    //.attr('transform', 'translate(-42, 315)rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', -42)
+    .attr('transform', 'rotate(-90)')
     .text('Maths Score');
 
   d3.select('#xAxis')
     .append('text')
     .attr('class', 'axis-label')
     .attr('id', 'xLabel')
-    .attr('transform', 'translate(500, 42)')
+    //.attr('transform', 'translate(500, 42)')
     .attr('text-anchor', 'middle')
+    .attr('x', width / 2)
+    .attr('y', 42)
     .text("Teachers' salaries (as % of GDP per capita)");
 
 
