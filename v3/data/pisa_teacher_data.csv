@@ -1,4 +1,4 @@
-Country,OECD,Region,GDP per capita,Maths Score,Reading Score,Science Score,Teachers' salaries,Certified teachers (%),Teachers with university level degree (%),Reflect on problem,Own procedure,Learn from mistakes,Explain solution
+Country,OECD,Region,GDP per capita,Maths Score,Reading Score,Science Score,Teachers' salaries,Certified teachers (%),Teachers with secondary education (%),Reflect on problem,Own procedure,Learn from mistakes,Explain solution
 Liechtenstein,no,Europe,148297.4,535,516,525,,80.8,76.5,62,,,
 Luxembourg,yes,Europe,105447.1,490,488,491,124,69.4,91.6,53,49,,
 Norway,yes,Europe,101563.7,489,504,495,89,89.2,100,42,47,,

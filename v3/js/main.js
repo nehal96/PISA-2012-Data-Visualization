@@ -10,6 +10,9 @@ function draw(data) {
 
 
   // Building menus
+  var xAxis = "Teachers' salaries (% GDP per capita)";
+  var yAxis = "Maths Score";
+
   var xAxisOptions = ["Teachers' salaries (% GDP per capita)",
                       "Certified teachers (%)",
                       "Teachers with secondary education (%)"];
@@ -37,8 +40,28 @@ function draw(data) {
     });
 
 
+  // Navigation titles and explanations
+  var nav_titles = [
+    "1. Teachers' Salaries",
+    "2. Teachers' Certifications",
+    "3. Teachers' Education Level"
+  ]
+
+  var explanation_text = [
+    "Teachers' salaries have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
+    "Teachers' certifications have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
+    "Teachers' education level have some sort of impact on Maths Scores, this is sample text. Lorem ipsum."
+  ]
+
+
   // Building navigation
   var menuOption = 0
+
+  d3.select("#plot-title h4")
+    .text(nav_titles[menuOption]);
+
+  d3.select("#explanation-text p")
+    .text(explanation_text[menuOption]);
 
   d3.select('#navigation #prev-button')
     .on('click', function() {
@@ -53,7 +76,7 @@ function draw(data) {
             d3.select('#navigation #next-button img')
               .attr('src', 'images/next.png')
         }
-        //navigation();
+        navigation();
     })
     .on('mouseover', function() {
         if (menuOption > 0) {
@@ -69,7 +92,7 @@ function draw(data) {
     .on('click', function() {
         if (menuOption < 2) {
             menuOption += 1;
-            //navigation();
+            navigation();
         }
         if (menuOption == 2) {
             d3.select('#navigation #next-button img')
@@ -89,6 +112,31 @@ function draw(data) {
             .style('cursor', 'default');
         }
     });
+
+
+  // Change title, explanation text and axes for each step in navigation
+  function navigation(d) {
+    d3.select("#plot-title h4")
+      .text(nav_titles[menuOption]);
+
+    d3.select("#explanation-text p")
+      .text(explanation_text[menuOption]);
+
+    if (menuOption == 0) {
+      xAxis = xAxisOptions[0];
+      yAxis = yAxisOptions[0];
+    }
+
+    if (menuOption == 1) {
+      xAxis = xAxisOptions[1];
+      yAxis = yAxisOptions[0];
+    }
+
+    if (menuOption == 2) {
+      xAxis = xAxisOptions[2];
+      yAxis = yAxisOptions[0];
+    }
+  };
 
 
   // Initializing tooltip as 'hidden'
@@ -123,6 +171,22 @@ function draw(data) {
       return d['Maths Score'];
   });
 
+  var reading_score_max = d3.max(data, function(d) {
+      return d['Reading Score'];
+  });
+
+  var reading_score_min = d3.min(data, function(d) {
+      return d['Reading Score'];
+  });
+
+  var science_score_max = d3.max(data, function(d) {
+      return d['Science Score'];
+  });
+
+  var science_score_min = d3.min(data, function(d) {
+      return d['Science Score'];
+  });
+
   var teachers_salaries_max = d3.max(data, function(d) {
       return d["Teachers' salaries"];
   });
@@ -139,9 +203,34 @@ function draw(data) {
       .range([height, margin])
       .domain([math_score_min - 50, math_score_max]);
 
+  var reading_score_scale = d3.scale.linear()
+      .range([height, margin])
+      .domain([reading_score_min - 50, reading_score_max]);
+
+  var science_score_scale = d3.scale.linear()
+      .range([height, margin])
+      .domain([science_score_min - 50, science_score_max]);
+
   var teacher_salaries_scale = d3.scale.linear()
       .range([margin, width])
       .domain([0, teachers_salaries_max + 20]);
+
+  var teacher_cert_scale = d3.scale.linear()
+      .range([margin, width])
+      .domain([0, 100]);
+
+  var teacher_ed_scale = d3.scale.linear()
+      .range([margin, width])
+      .domain([0, 100]);
+
+  var scales = {
+    'Maths Scores': math_score_scale,
+    'Reading Score': reading_score_scale,
+    'Science Score': science_score_scale,
+    "Teachers' salaries (% GDP per capita)": teacher_salaries_scale,
+    "Certified teachers (%)": teacher_cert_scale,
+    "Teachers with secondary education (%)": teacher_ed_scale
+  };
 
 
   // Building the x- and y-axis
@@ -179,7 +268,7 @@ function draw(data) {
     .attr('x', -height / 2)
     .attr('y', -42)
     .attr('transform', 'rotate(-90)')
-    .text('Maths Score');
+    .text(yAxis);
 
   d3.select('#xAxis')
     .append('text')
@@ -189,7 +278,7 @@ function draw(data) {
     .attr('text-anchor', 'middle')
     .attr('x', width / 2)
     .attr('y', 42)
-    .text("Teachers' salaries (as % of GDP per capita)");
+    .text(xAxis);
 
 
   // Setting the scale for the circle radius
@@ -283,13 +372,36 @@ function draw(data) {
               d3.select('#tooltip')
                 .classed("hidden", false);
          });
+
+  //function updateScales(xAxis, yAxis) {
+  //    var x_scale = scales[xAxis];
+  //    var y_scale = scales[yAxis];
+  //};
+
+  //function updateChart() {
+
+  //  updateScales(xAxis, yAxis);
+
+  //  d3.select('#plot')
+  //    .selectAll('circle')
+  //    .transition()
+  //    .duration(1000)
+  //    .ease('cubic-out')
+  //    .attr('cx', function(d) {
+  //        return isNaN(d[xAxis]) ? d3.select(this).attr('cx'):
+  //    })
+  //}
 };
 
 
 // Loads data
 d3.csv("data/pisa_teacher_data.csv", function(d) {
     d['GDP per capita'] = +d['GDP per capita'];
-    d['Maths score'] = +d['Maths score'];
+    d['Maths Score'] = +d['Maths Score'];
+    d["Reading Score"] = +d["Reading Score"];
+    d["Science Score"] = +d["Science Score"];
     d["Teachers' salaries"] = +d["Teachers' salaries"];
+    d["Certified teachers (%)"] = +d["Certified teachers (%)"];
+    d["Teachers with secondary education (%)"] = +d["Teachers with secondary education (%)"]
     return d;
   }, draw);
