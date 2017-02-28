@@ -1,4 +1,5 @@
 
+
 // Main function
 function draw(data) {
   "use strict";
@@ -8,6 +9,20 @@ function draw(data) {
       OECD_colour = '#3498DB',
       non_OECD_colour = '#F89406';
 
+
+  function scale_max(data, axis_label) {
+      return d3.max(data, function(d) {
+          return d[axis_label];
+      });
+  }
+
+  function scale_min(data, axis_label) {
+      return d3.min(data, function(d) {
+          return d[axis_label];
+    });
+  }
+
+  var math_max = scale_max(data, 'Maths Score');
 
   // Building menus
   var xAxis = "Teachers' salaries (% GDP per capita)";
@@ -136,6 +151,8 @@ function draw(data) {
       xAxis = xAxisOptions[2];
       yAxis = yAxisOptions[0];
     }
+
+    //updateChart(xAxis, yAxis);
   };
 
 
@@ -163,13 +180,9 @@ function draw(data) {
 
 
   // Building x- and y-axis scales
-  var math_score_max = d3.max(data, function(d) {
-      return d['Maths Score'];
-  });
+  var math_score_max = scale_max(data, 'Maths Score');
 
-  var math_score_min = d3.min(data, function(d) {
-      return d['Maths Score'];
-  });
+  var math_score_min = scale_min(data, 'Maths Score');
 
   var reading_score_max = d3.max(data, function(d) {
       return d['Reading Score'];
@@ -372,25 +385,32 @@ function draw(data) {
               d3.select('#tooltip')
                 .classed("hidden", false);
          });
+  /*
+  function updateScales(xAxis, yAxis) {
+      var x_scale = scales[xAxis];
+      var y_scale = scales[yAxis];
+  };
 
-  //function updateScales(xAxis, yAxis) {
-  //    var x_scale = scales[xAxis];
-  //    var y_scale = scales[yAxis];
-  //};
+  function updateChart(xAxis, yAxis) {
 
-  //function updateChart() {
+    updateScales(xAxis, yAxis);
 
-  //  updateScales(xAxis, yAxis);
-
-  //  d3.select('#plot')
-  //    .selectAll('circle')
-  //    .transition()
-  //    .duration(1000)
-  //    .ease('cubic-out')
-  //    .attr('cx', function(d) {
-  //        return isNaN(d[xAxis]) ? d3.select(this).attr('cx'):
-  //    })
-  //}
+    d3.select('#plot')
+      .selectAll('circle')
+      .transition()
+      .duration(1000)
+      .ease('cubic-out')
+      .attr('cx', function(d) {
+          return isNaN(d[xAxis]) ? d3.select(this).attr('cx'): x_scale(d[xAxis]);
+      })
+      .attr('cy', function(d) {
+          return isNan(d[yAxis]) ? d3.select(this).attr('cy'): y_scale(d[yAxis]);
+      })
+      .attr('r', function(d) {
+          return return d[yAxis] == 0 ? 0 : radius(d['GDP per capita']);
+      });
+  };
+  */
 };
 
 

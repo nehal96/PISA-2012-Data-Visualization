@@ -5,10 +5,13 @@ body {
   padding-top: 5rem;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 .heading {
   padding: 16px 16px;
   text-align: center;
-  background-color: #fd9191;
 }
 
 .main{
@@ -20,23 +23,19 @@ body {
   font-weight: bold;
 }
 
-#navbar {
-  fill: #2B85B3;
-}
 
 #navigation {
   padding-bottom: 8px;
   padding-top: 8px;
-  background-color: #c9fdd7;
+  background-color: #f7fbfc;
+  border-bottom: 1px solid black;
 }
 
 #left-col {
-  background-color: #fddd8a;
   padding-top: 8px;
 }
 
 #right-col {
-  background-color: #fddd8a;
   padding-top: 8px;
 }
 
@@ -60,7 +59,7 @@ body {
 }
 
 #chart {
-  background-color: #fff8d2;
+  background-color: #f7fbfc;
 }
 
 #plot{
@@ -73,10 +72,6 @@ body {
   width: 50%;
 }
 
-/*#xLabel{
-  width: 50%;
-}
-*/
 
 #tooltip {
   position: absolute;
@@ -105,48 +100,6 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   line-height: 20px;
-}
-
-/* -------------------- */
-
-/*
-
-
-
-#menu {
-  position: absolute;
-  top: 160px;
-  left: 15px;
-  width: 120px;
-  text-align: left;
-  opacity:1;
-  transition:opacity 1s linear;
-}
-
-ul {
-  list-style: none;
-  font-size: 12px;
-  padding: 0;
-  margin-top: 3px;
-}
-
-li {
-  cursor: pointer;
-  padding-bottom: 5px;
-  font-weight: 100%;
-}
-
-
-/* body {
-  background-color: #fff;
-  font-family: helvetica, sans-serif;
-  font-weight: 100;
-}
-*/
-
-
-h1 {
-  font-size: 3rem;
 }
 
 /* SVG styling */
