@@ -1,0 +1,65 @@
+Country,OECD,Region,GDP per capita,Maths Score,Reading Score,Science Score,Teachers' salaries,Certified teachers (%),Teachers with secondary education (%),Reflect on problem,Own procedure,Learn from mistakes,Explain solution
+Liechtenstein,no,Europe,148297.4,535,516,525,,80.8,76.5,62,,,
+Luxembourg,yes,Europe,105447.1,490,488,491,124,69.4,91.6,53,49,,
+Norway,yes,Europe,101563.7,489,504,495,89,89.2,100,42,47,,
+Qatar,no,Middle East & Africa,92692.6,376,388,384,141,75.1,97,74,,,
+Switzerland,yes,Europe,83164.4,531,509,515,,85.4,64.8,58,,,
+Macao - China,no,Asia,77145,538,509,521,113,99.6,92.1,43,,,
+Australia,yes,Asia,67646.1,504,512,521,122,97.8,97,62,39,69,70
+Denmark,yes,Europe,58125.4,500,496,498,136,,88.6,59,32,,
+Sweden,yes,Europe,57134.1,478,483,485,92,88.8,76.5,46,,,
+Singapore,no,Asia,54451.2,573,542,551,133,96.9,95.1,59,,,
+Canada,yes,Americas,52495.3,518,523,525,151,96.7,95.3,65,48,69,73
+United States,yes,Americas,51433,481,498,497,104,95.5,98.7,69,,,
+Netherlands,yes,Europe,49474.7,523,511,522,157,79.7,32,66,28,,
+Ireland,yes,Europe,49231.4,501,523,522,151,99.6,99.7,71,31,,
+Austria,yes,Europe,48333.6,506,490,506,114,87,52.6,50,48,52,67
+Finland,yes,Europe,47415.6,519,524,545,121,91.5,91.5,57,41,,
+Japan,yes,Asia,46701,536,538,547,147,99.9,99.9,40,29,,
+Belgium,yes,Europe,44740.6,515,509,505,154,87,39.1,58,31,57,66
+Iceland,yes,Europe,44258.8,493,483,478,80,97.6,81.8,52,34,,
+Germany,yes,Europe,44065.2,514,508,524,176,93.4,,49,48,,
+United Arab Emirates,no,Middle East & Africa,41712.4,434,442,448,,,91.2,73,,,
+United Kingdom,yes,Europe,41538.3,494,499,514,138,95.2,95.8,68,,,
+France,yes,Europe,40838,495,505,499,108,81.4,65.7,63,31,,
+New Zealand,yes,Asia,40066.6,500,512,516,152,95.5,93.1,60,46,,
+Hong Kong - China,no,Asia,36707.8,561,545,555,198,96,97.4,46,,,
+Italy,yes,Europe,34814.1,485,490,494,121,85.5,89.6,59,41,,
+Israel,yes,Middle East & Africa,32569.6,466,486,470,89,75.2,85.9,71,48,,
+Spain,yes,Europe,28647.8,484,488,496,158,100,94.6,62,,,
+Korea,yes,Asia,24454,554,536,538,182,99.6,99.7,28,18,,
+Slovenia,yes,Europe,22486.5,501,481,514,129,95.3,88.3,61,,,
+Greece,yes,Europe,22242.7,453,477,467,115,81.8,93.5,72,46,,
+Portugal,yes,Europe,20577.4,487,488,489,174,95.8,71.5,67,,,
+Czech Republic,yes,Europe,19729.9,499,493,508,89,91.6,91.8,71,53,,
+Estonia,yes,Europe,17421.9,521,516,541,68,94.9,,60,41,,
+Slovak Republic,yes,Europe,17274.6,482,463,471,61,94.6,90.4,61,,,
+Chile,yes,Americas,15253.3,423,441,445,138,19.5,92.2,66,50,72,71
+Uruguay,no,Americas,15092.5,409,411,416,78,57,8.3,68,,,
+Russian Federation,no,Europe,15042.2,482,475,486,,97.3,87.9,61,,,
+Lithuania,no,Europe,14342.5,479,477,496,101,96.3,89.9,67,,,
+Latvia,no,Europe,13799.2,491,489,502,52,80.2,49.7,74,,,
+Croatia,no,Europe,13236,471,485,491,128,100,94.2,56,32,49,68
+Poland,yes,Europe,13145.1,518,518,526,98,99.3,93.2,70,47,,
+Argentina,no,Americas,13040.3,388,396,406,79,88.3,17.5,63,51,74,71
+Hungary,yes,Europe,12834.3,477,488,494,81,,99.3,69,41,,
+Kazakhstan,no,Asia,12387.2,432,393,425,,91.2,85.3,79,,,
+Brazil,no,Americas,12157.3,391,410,405,,,87.1,64,50,65,55
+Malaysia,yes,Asia,10834.7,421,398,420,209,97.6,88.8,58,,,
+Turkey,yes,Europe,10539.4,448,475,463,,92.1,93.3,52,,,
+Costa Rica,no,Americas,9985.3,407,441,429,,78.7,84,49,30,68,55
+Mexico,yes,Americas,9720.6,413,424,415,,27.7,88.1,64,47,,
+Romania,no,Europe,8558.4,445,438,439,44,99.4,95.9,68,,,
+Colombia,no,Americas,7885.1,376,403,399,165,10,90.8,61,52,72,74
+Bulgaria,no,Europe,7378,439,436,446,95,,,83,59,72,80
+Montenegro,no,Europe,6586.8,410,422,410,155,96.1,89,53,,,
+Peru,no,Americas,6386.4,368,384,373,92,89.1,77.3,66,,,
+Thailand,no,Asia,5915.2,427,441,444,124,93.7,99.2,46,,,
+Serbia,no,Europe,5659.4,449,446,445,,91.1,6.8,57,,,
+Jordan,no,Middle East & Africa,4423.1,386,399,409,215,73.7,84.8,82,,,
+Albania,no,Europe,4247.8,394,394,397,,93.9,83.9,81,46,88,90
+Tunisia,no,Middle East & Africa,4179.5,388,404,398,188,56.9,87.3,54,,,
+Indonesia,no,Asia,3700.5,375,396,382,47,60.2,82.1,84,,,
+Vietnam,no,Asia,1754.5,511,508,528,,78.5,87.2,67,,,
+Chinese Taipei,no,Asia,,560,523,523,,92.9,90.6,48,34,65,50
+Shangai-China,no,Asia,,613,570,580,105,96.7,95.1,66,,,
