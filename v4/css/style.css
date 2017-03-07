@@ -78,7 +78,8 @@ h1 {
   width: 200px;
   height: auto;
   padding: 10px;
-  background-color: #1b3c59;
+  background-color: #1c3d63;
+  /*background-color: #1b3c59;*/
   opacity: 0.7;
   /*background-color: rgba(0, 0, 0, 0.7);*/
   -webkit-border-radius: 10px;

@@ -12,16 +12,27 @@ function draw(data) {
 
 
   // Building menus
-  var xAxis = "Teachers' salaries (% GDP per capita)";
+  var xAxis = "Teachers' salaries";
   var yAxis = "Maths Score";
 
-  var xAxisOptions = ["Teachers' salaries (% GDP per capita)",
-                      "Certified teachers (%)",
-                      "Teachers with secondary education (%)"];
+  var xAxisOptions = ["Teachers' salaries",
+                      "Teachers with secondary education (%)",
+                      "Cognitive Activation Index",
+                      "School Climate"];
 
   var yAxisOptions = ["Maths Score",
                       "Reading Score",
                       "Science Score"];
+
+  var labels = {
+      "Maths Score": "Mean Maths Score",
+      "Reading Score": "Mean Reading Score",
+      "Science Score": "Mean Science Score",
+      "Teachers' salaries": "Teachers' salaries (% GDP per capita)",
+      "Teachers with secondary education (%)": "Teachers with secondary education (%)",
+      "Cognitive Activation Index": "Index of Teachers use of Cognitive Activation",
+      "School Climate": "Late Students (%)"
+  };
 
   d3.select("#x-axis-menu")
     .selectAll('li')
@@ -45,14 +56,16 @@ function draw(data) {
   // Navigation titles and explanations
   var nav_titles = [
     "1. Teachers' Salaries",
-    "2. Teachers' Certifications",
-    "3. Teachers' Education Level"
+    "2. Teachers' Education Level",
+    "3. Teachers' Use of Cognitive Activation",
+    "4. School Climate"
   ]
 
   var explanation_text = [
     "Teachers' salaries have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
-    "Teachers' certifications have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
-    "Teachers' education level have some sort of impact on Maths Scores, this is sample text. Lorem ipsum."
+    "Teachers' education level have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
+    "Teachers' use of cognitive activation has some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
+    "Lots of students being late to school have some sort of impact on Maths Scores, this is sample text. Lorem ipsum."
   ]
 
 
@@ -75,7 +88,7 @@ function draw(data) {
             d3.select('#navigation #prev-button img')
               .attr('src', 'images/prev_light.png');
         }
-        if (menuOption == 1) {
+        if (menuOption == 2) {
             d3.select('#navigation #next-button img')
               .attr('src', 'images/next.png');
         }
@@ -92,11 +105,11 @@ function draw(data) {
 
   d3.select('#navigation #next-button')
     .on('click', function() {
-        if (menuOption < 2) {
+        if (menuOption < 3) {
             menuOption += 1;
             navigation();
         }
-        if (menuOption == 2) {
+        if (menuOption == 3) {
             d3.select('#navigation #next-button img')
               .attr('src', 'images/next_light.png')
         }
@@ -106,7 +119,7 @@ function draw(data) {
         }
     })
     .on('mouseover', function() {
-        if (menuOption < 2) {
+        if (menuOption < 3) {
             d3.select('#navigation #next-button img')
               .style('cursor', 'pointer');
         } else {
@@ -127,22 +140,29 @@ function draw(data) {
     if (menuOption == 0) {
       xAxis = xAxisOptions[0];
       yAxis = yAxisOptions[0];
-      build_x_axis(teacher_salaries_scale, xAxis);
+      build_x_axis(teacher_salaries_scale, labels[xAxis]);
       updateChart(scales, "Teachers' salaries", yAxis);
     }
 
     if (menuOption == 1) {
       xAxis = xAxisOptions[1];
       yAxis = yAxisOptions[0];
-      build_x_axis(teacher_cert_scale, xAxis);
-      updateChart(scales, "Certified teachers (%)", yAxis);
+      build_x_axis(teacher_ed_scale, labels[xAxis]);
+      updateChart(scales, "Teachers with secondary education (%)", yAxis);
     }
 
     if (menuOption == 2) {
       xAxis = xAxisOptions[2];
       yAxis = yAxisOptions[0];
-      build_x_axis(teacher_ed_scale, xAxis);
-      updateChart(scales, "Teachers with secondary education (%)", yAxis);
+      build_x_axis(teacher_cog_scale, labels[xAxis]);
+      updateChart(scales, "Cognitive Activation Index", yAxis)
+    }
+
+    if (menuOption == 3) {
+      xAxis = xAxisOptions[3];
+      yAxis = yAxisOptions[0];
+      build_x_axis(school_climate_scale, labels[xAxis]);
+      updateChart(scales, "School Climate", yAxis)
     }
   };
 
@@ -182,7 +202,7 @@ function draw(data) {
 
       return d3.scale.linear()
                      .range([height, margin])
-                     .domain([scale_min - 50, scale_max]);
+                     .domain([scale_min - 50, scale_max + 30]);
   }
 
   var teachers_salaries_max = d3.max(data, function(d) {
@@ -203,21 +223,26 @@ function draw(data) {
       .range([margin, width])
       .domain([0, teachers_salaries_max + 20]);
 
-  var teacher_cert_scale = d3.scale.linear()
-      .range([margin, width])
-      .domain([0, 100]);
-
   var teacher_ed_scale = d3.scale.linear()
       .range([margin, width])
       .domain([0, 100]);
+
+  var teacher_cog_scale = d3.scale.linear()
+      .range([margin, width])
+      .domain([25, 85]);
+
+  var school_climate_scale = d3.scale.linear()
+      .range([margin, width])
+      .domain([0, 75]);
 
   var scales = {
     'Maths Score': math_score_scale,
     'Reading Score': reading_score_scale,
     'Science Score': science_score_scale,
     "Teachers' salaries": teacher_salaries_scale,
-    "Certified teachers (%)": teacher_cert_scale,
-    "Teachers with secondary education (%)": teacher_ed_scale
+    "Teachers with secondary education (%)": teacher_ed_scale,
+    "Cognitive Activation Index": teacher_cog_scale,
+    "School Climate": school_climate_scale
   };
 
 
@@ -376,10 +401,10 @@ function draw(data) {
                 .text(d['Country'] + " (" + d['Region'] + ")");
 
               d3.select('#tooltip #y')
-                .text("Mean Maths Score: " + d['Maths Score'])
+                .text(labels[yAxis] + ": " + d[yAxis])
 
               d3.select('#tooltip #x')
-                .text("Teachers' salaries (% GDP per capita): " + d["Teachers' salaries"])
+                .text(labels[xAxis] + ": " + d[xAxis])
 
               d3.select('#tooltip')
                 .classed("hidden", false);
@@ -414,7 +439,8 @@ d3.csv("data/pisa_teacher_data.csv", function(d) {
     d["Reading Score"] = +d["Reading Score"];
     d["Science Score"] = +d["Science Score"];
     d["Teachers' salaries"] = +d["Teachers' salaries"];
-    d["Certified teachers (%)"] = +d["Certified teachers (%)"];
-    d["Teachers with secondary education (%)"] = +d["Teachers with secondary education (%)"]
+    d["Teachers with secondary education (%)"] = +d["Teachers with secondary education (%)"];
+    d["Cognitive Activation Index"] = +d["Cognitive Activation Index"];
+    d["School Climate"] = +d["School Climate"];
     return d;
   }, draw);
