@@ -7,22 +7,9 @@ function draw(data) {
       width = 960 - margin,
       height = 550 - margin,
       OECD_colour = '#3498DB',
-      non_OECD_colour = '#F89406';
+      non_OECD_colour = '#ff9a00'
+      //'#F89406';
 
-
-  function scale_max(data, axis_label) {
-      return d3.max(data, function(d) {
-          return d[axis_label];
-      });
-  }
-
-  function scale_min(data, axis_label) {
-      return d3.min(data, function(d) {
-          return d[axis_label];
-    });
-  }
-
-  var math_max = scale_max(data, 'Maths Score');
 
   // Building menus
   var xAxis = "Teachers' salaries (% GDP per capita)";
@@ -82,16 +69,16 @@ function draw(data) {
     .on('click', function() {
         if (menuOption > 0) {
             menuOption -= 1;
+            navigation();
         }
         if (menuOption == 0) {
             d3.select('#navigation #prev-button img')
-              .attr('src', 'images/prev_light.png')
+              .attr('src', 'images/prev_light.png');
         }
         if (menuOption == 1) {
             d3.select('#navigation #next-button img')
-              .attr('src', 'images/next.png')
+              .attr('src', 'images/next.png');
         }
-        navigation();
     })
     .on('mouseover', function() {
         if (menuOption > 0) {
@@ -140,19 +127,23 @@ function draw(data) {
     if (menuOption == 0) {
       xAxis = xAxisOptions[0];
       yAxis = yAxisOptions[0];
+      build_x_axis(teacher_salaries_scale, xAxis);
+      updateChart(scales, "Teachers' salaries", yAxis);
     }
 
     if (menuOption == 1) {
       xAxis = xAxisOptions[1];
       yAxis = yAxisOptions[0];
+      build_x_axis(teacher_cert_scale, xAxis);
+      updateChart(scales, "Certified teachers (%)", yAxis);
     }
 
     if (menuOption == 2) {
       xAxis = xAxisOptions[2];
       yAxis = yAxisOptions[0];
+      build_x_axis(teacher_ed_scale, xAxis);
+      updateChart(scales, "Teachers with secondary education (%)", yAxis);
     }
-
-    //updateChart(xAxis, yAxis);
   };
 
 
@@ -166,7 +157,6 @@ function draw(data) {
               .append('svg')
               .attr('width', width + margin)
               .attr('height', height + margin);
-              //.attr("transform", "translate(" + (width / 2) + ", " + (height / 1.2) + ")");
 
 
   // Initializing circle elements and binding with data
@@ -180,25 +170,20 @@ function draw(data) {
 
 
   // Building x- and y-axis scales
-  var math_score_max = scale_max(data, 'Maths Score');
 
-  var math_score_min = scale_min(data, 'Maths Score');
+  function build_y_axis_scale(data, axis_label) {
+      var scale_max = d3.max(data, function(d) {
+          return d[axis_label];
+      });
 
-  var reading_score_max = d3.max(data, function(d) {
-      return d['Reading Score'];
-  });
+      var scale_min = d3.min(data, function(d) {
+          return d[axis_label];
+      });
 
-  var reading_score_min = d3.min(data, function(d) {
-      return d['Reading Score'];
-  });
-
-  var science_score_max = d3.max(data, function(d) {
-      return d['Science Score'];
-  });
-
-  var science_score_min = d3.min(data, function(d) {
-      return d['Science Score'];
-  });
+      return d3.scale.linear()
+                     .range([height, margin])
+                     .domain([scale_min - 50, scale_max]);
+  }
 
   var teachers_salaries_max = d3.max(data, function(d) {
       return d["Teachers' salaries"];
@@ -208,21 +193,11 @@ function draw(data) {
       return d["Teachers' salaries"];
   });
 
-  //var teacher_salaries_extent = d3.extent(data, function(d) {
-  //    return d["Teachers' salaries"];
-  //});
+  var math_score_scale = build_y_axis_scale(data, 'Maths Score');
 
-  var math_score_scale = d3.scale.linear()
-      .range([height, margin])
-      .domain([math_score_min - 50, math_score_max]);
+  var reading_score_scale = build_y_axis_scale(data, 'Reading Score');
 
-  var reading_score_scale = d3.scale.linear()
-      .range([height, margin])
-      .domain([reading_score_min - 50, reading_score_max]);
-
-  var science_score_scale = d3.scale.linear()
-      .range([height, margin])
-      .domain([science_score_min - 50, science_score_max]);
+  var science_score_scale = build_y_axis_scale(data, 'Science Score');
 
   var teacher_salaries_scale = d3.scale.linear()
       .range([margin, width])
@@ -237,16 +212,42 @@ function draw(data) {
       .domain([0, 100]);
 
   var scales = {
-    'Maths Scores': math_score_scale,
+    'Maths Score': math_score_scale,
     'Reading Score': reading_score_scale,
     'Science Score': science_score_scale,
-    "Teachers' salaries (% GDP per capita)": teacher_salaries_scale,
+    "Teachers' salaries": teacher_salaries_scale,
     "Certified teachers (%)": teacher_cert_scale,
     "Teachers with secondary education (%)": teacher_ed_scale
   };
 
 
   // Building the x- and y-axis
+  function build_y_axis(y_axis_scale, y_axis_label) {
+      var y_axis_elem = d3.svg.axis()
+                              .scale(y_axis_scale)
+                              .orient('left')
+                              .ticks(5);
+
+      return d3.select('#yAxis')
+               .transition()
+               .call(y_axis_elem)
+               .select('#xLabel')
+               .text(y_axis_label);
+  }
+
+  function build_x_axis(x_axis_scale, x_axis_label) {
+      var x_axis_elem = d3.svg.axis()
+                              .scale(x_axis_scale)
+                              .orient('bottom')
+                              .ticks(10);
+
+      return d3.select('#xAxis')
+               .transition()
+               .call(x_axis_elem)
+               .select('#xLabel')
+               .text(x_axis_label);
+  }
+
   var math_score_axis = d3.svg.axis()
       .scale(math_score_scale)
       .orient('left')
@@ -277,7 +278,6 @@ function draw(data) {
     .attr('class', 'axis-label')
     .attr('id', 'yLabel')
     .attr('text-anchor', 'middle')
-    //.attr('transform', 'translate(-42, 315)rotate(-90)')
     .attr('x', -height / 2)
     .attr('y', -42)
     .attr('transform', 'rotate(-90)')
@@ -287,7 +287,6 @@ function draw(data) {
     .append('text')
     .attr('class', 'axis-label')
     .attr('id', 'xLabel')
-    //.attr('transform', 'translate(500, 42)')
     .attr('text-anchor', 'middle')
     .attr('x', width / 2)
     .attr('y', 42)
@@ -385,15 +384,9 @@ function draw(data) {
               d3.select('#tooltip')
                 .classed("hidden", false);
          });
-  /*
-  function updateScales(xAxis, yAxis) {
-      var x_scale = scales[xAxis];
-      var y_scale = scales[yAxis];
-  };
 
-  function updateChart(xAxis, yAxis) {
 
-    updateScales(xAxis, yAxis);
+  function updateChart(scales_dict, xAxis, yAxis) {
 
     d3.select('#plot')
       .selectAll('circle')
@@ -401,16 +394,16 @@ function draw(data) {
       .duration(1000)
       .ease('cubic-out')
       .attr('cx', function(d) {
-          return isNaN(d[xAxis]) ? d3.select(this).attr('cx'): x_scale(d[xAxis]);
+          return scales_dict[xAxis](d[xAxis])
       })
       .attr('cy', function(d) {
-          return isNan(d[yAxis]) ? d3.select(this).attr('cy'): y_scale(d[yAxis]);
+          return scales_dict[yAxis](d[yAxis])
       })
       .attr('r', function(d) {
-          return return d[yAxis] == 0 ? 0 : radius(d['GDP per capita']);
+          return d[xAxis] == 0 ? 0 : radius(d['GDP per capita']);
       });
   };
-  */
+
 };
 
 
