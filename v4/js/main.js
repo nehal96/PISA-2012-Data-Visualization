@@ -35,21 +35,37 @@ function draw(data) {
   };
 
   d3.select("#x-axis-menu")
-    .selectAll('li')
+    .selectAll('p')
     .data(xAxisOptions)
     .enter()
-    .append('li')
+    .append('p')
     .text(function(d) {
         return d;
+    })
+    .classed('selected', function(d) {
+        return d === xAxis;
+    })
+    .on('click', function(d) {
+        xAxis = d;
+        updateMenu();
+        updateChart(scales, xAxis, yAxis);
     });
 
   d3.select("#y-axis-menu")
-    .selectAll('li')
+    .selectAll('p')
     .data(yAxisOptions)
     .enter()
-    .append('li')
+    .append('p')
     .text(function(d) {
         return d;
+    })
+    .classed('selected', function(d) {
+        return d === yAxis;
+    })
+    .on('click', function(d) {
+        yAxis = d;
+        updateMenu();
+        updateChart(scales, xAxis, yAxis)
     });
 
 
@@ -58,78 +74,21 @@ function draw(data) {
     "1. Teachers' Salaries",
     "2. Teachers' Education Level",
     "3. Teachers' Use of Cognitive Activation",
-    "4. School Climate"
+    "4. School Climate",
+    "5. Try It Yourself!"
   ]
 
   var explanation_text = [
     "Teachers' salaries have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
     "Teachers' education level have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
     "Teachers' use of cognitive activation has some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
-    "Lots of students being late to school have some sort of impact on Maths Scores, this is sample text. Lorem ipsum."
+    "Lots of students being late to school have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
+    "Try it yourself!"
   ]
 
 
-  // Building navigation
-  var menuOption = 0
-
-  d3.select("#plot-title h4")
-    .text(nav_titles[menuOption]);
-
-  d3.select("#explanation-text p")
-    .text(explanation_text[menuOption]);
-
-  d3.select('#navigation #prev-button')
-    .on('click', function() {
-        if (menuOption > 0) {
-            menuOption -= 1;
-            navigation();
-        }
-        if (menuOption == 0) {
-            d3.select('#navigation #prev-button img')
-              .attr('src', 'images/prev_light.png');
-        }
-        if (menuOption == 2) {
-            d3.select('#navigation #next-button img')
-              .attr('src', 'images/next.png');
-        }
-    })
-    .on('mouseover', function() {
-        if (menuOption > 0) {
-              d3.select('#navigation #prev-button img')
-                .style('cursor', 'pointer');
-        } else {
-          d3.select('#navigation #prev-button img')
-            .style('cursor', 'default');
-        }
-    });
-
-  d3.select('#navigation #next-button')
-    .on('click', function() {
-        if (menuOption < 3) {
-            menuOption += 1;
-            navigation();
-        }
-        if (menuOption == 3) {
-            d3.select('#navigation #next-button img')
-              .attr('src', 'images/next_light.png')
-        }
-        if (menuOption == 1) {
-            d3.select('#navigation #prev-button img')
-              .attr('src', 'images/prev.png')
-        }
-    })
-    .on('mouseover', function() {
-        if (menuOption < 3) {
-            d3.select('#navigation #next-button img')
-              .style('cursor', 'pointer');
-        } else {
-            d3.select('#navigation #next-button img')
-            .style('cursor', 'default');
-        }
-    });
-
-
   // Change title, explanation text and axes for each step in navigation
+
   function navigation(d) {
     d3.select("#plot-title h4")
       .text(nav_titles[menuOption]);
@@ -163,8 +122,88 @@ function draw(data) {
       yAxis = yAxisOptions[0];
       build_x_axis(school_climate_scale, labels[xAxis]);
       updateChart(scales, "School Climate", yAxis)
+
+      d3.select("#menu")
+        .style('opacity', '0')
+        .style('transition', 'opacity 0.7s linear')
+
+      d3.classed('show', false)
+        .classed('hidden', true);
+    }
+
+    if (menuOption == 4) {
+      xAxis = xAxisOptions[0];
+      yAxis = yAxisOptions[0];
+      build_x_axis(teacher_salaries_scale, labels[xAxis]);
+      updateChart(scales, "Teachers' salaries", yAxis);
+
+      d3.select("#menu")
+        .classed('hidden', false)
+        .classed('show', true)
+        .style('opacity', '1')
+        .style('transition', 'opacity 1s linear')
     }
   };
+
+
+  // Building navigation
+  var menuOption = 0
+
+  d3.select("#plot-title h4")
+    .text(nav_titles[menuOption]);
+
+  d3.select("#explanation-text p")
+    .text(explanation_text[menuOption]);
+
+  d3.select('#navigation #prev-button')
+    .on('click', function() {
+        if (menuOption > 0) {
+            menuOption -= 1;
+            navigation();
+        }
+        if (menuOption == 3) {
+            d3.select('#navigation #next-button img')
+              .attr('src', 'images/next.png');
+        }
+        if (menuOption == 0) {
+            d3.select('#navigation #prev-button img')
+              .attr('src', 'images/prev_light.png');
+        }
+    })
+    .on('mouseover', function() {
+        if (menuOption > 0) {
+              d3.select('#navigation #prev-button img')
+                .style('cursor', 'pointer');
+        } else {
+          d3.select('#navigation #prev-button img')
+            .style('cursor', 'default');
+        }
+    });
+
+  d3.select('#navigation #next-button')
+    .on('click', function() {
+        if (menuOption < 4) {
+            menuOption += 1;
+            navigation();
+        }
+        if (menuOption == 4) {
+            d3.select('#navigation #next-button img')
+              .attr('src', 'images/next_light.png')
+        }
+        if (menuOption == 1) {
+            d3.select('#navigation #prev-button img')
+              .attr('src', 'images/prev.png')
+        }
+    })
+    .on('mouseover', function() {
+        if (menuOption < 4) {
+            d3.select('#navigation #next-button img')
+              .style('cursor', 'pointer');
+        } else {
+            d3.select('#navigation #next-button img')
+            .style('cursor', 'default');
+        }
+    });
 
 
   // Initializing tooltip as 'hidden'
@@ -410,6 +449,19 @@ function draw(data) {
                 .classed("hidden", false);
          });
 
+  function updateMenu() {
+    d3.select("#x-axis-menu")
+      .selectAll('p')
+      .classed('selected', function(d) {
+          return d === xAxis;
+      });
+
+    d3.select("#y-axis-menu")
+      .selectAll('p')
+      .classed('selected', function(d) {
+          return d === yAxis;
+      });
+  }
 
   function updateChart(scales_dict, xAxis, yAxis) {
 

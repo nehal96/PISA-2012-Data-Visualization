@@ -23,6 +23,26 @@ h1 {
   font-weight: bold;
 }
 
+.menu-options {
+  margin: 0px;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 1s, opacity 1s linear;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 1s, opacity 1s linear;
+  transition-delay: 0s;
+}
+
+.selected {
+  font-weight: bold;
+}
 
 #navigation {
   padding-bottom: 8px;
@@ -33,6 +53,51 @@ h1 {
 
 #left-col {
   padding-top: 8px;
+}
+
+#x-axis-menu {
+  margin-top: 85px;
+}
+
+#x-axis-menu h6{
+  margin-bottom: 10px;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+}
+
+#x-axis-menu p{
+  margin-bottom: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#x-axis-menu p:hover{
+  color: #06C;
+  font-weight: bold;
+}
+
+#y-axis-menu {
+  margin-top: 25px;
+  width: 205px;
+}
+
+#y-axis-menu h6{
+  margin-bottom: 10px;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+}
+
+#y-axis-menu p{
+  margin-bottom: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#y-axis-menu p:hover{
+  color: #06C;
+  font-weight: bold;
 }
 
 #right-col {
