@@ -42,6 +42,7 @@ h1 {
 
 .selected {
   font-weight: bold;
+  color: #09a8fa;
 }
 
 #navigation {
@@ -73,7 +74,7 @@ h1 {
 }
 
 #x-axis-menu p:hover{
-  color: #06C;
+  color: #09a8fa;
   font-weight: bold;
 }
 
@@ -96,7 +97,7 @@ h1 {
 }
 
 #y-axis-menu p:hover{
-  color: #06C;
+  color: #09a8fa;
   font-weight: bold;
 }
 

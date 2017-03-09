@@ -48,7 +48,11 @@ function draw(data) {
     .on('click', function(d) {
         xAxis = d;
         updateMenu();
+        build_x_axis(scales[xAxis], labels[xAxis]);
         updateChart(scales, xAxis, yAxis);
+
+        d3.select('#xLabel')
+          .text(xAxis);
     });
 
   d3.select("#y-axis-menu")
@@ -65,7 +69,11 @@ function draw(data) {
     .on('click', function(d) {
         yAxis = d;
         updateMenu();
-        updateChart(scales, xAxis, yAxis)
+        build_y_axis(scales[yAxis], labels[yAxis]);
+        updateChart(scales, xAxis, yAxis);
+
+        d3.select('#yLabel')
+          .text(yAxis);
     });
 
 
@@ -125,7 +133,7 @@ function draw(data) {
 
       d3.select("#menu")
         .style('opacity', '0')
-        .style('transition', 'opacity 0.7s linear')
+        .style('transition', 'opacity 0.7s linear');
 
       d3.classed('show', false)
         .classed('hidden', true);
@@ -161,7 +169,7 @@ function draw(data) {
             menuOption -= 1;
             navigation();
         }
-        if (menuOption == 3) {
+        if (menuOption == 2) {
             d3.select('#navigation #next-button img')
               .attr('src', 'images/next.png');
         }
