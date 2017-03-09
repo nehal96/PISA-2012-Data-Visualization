@@ -57,7 +57,8 @@ h1 {
 }
 
 #x-axis-menu {
-  margin-top: 85px;
+  margin-top: 60px;
+  width: 100%;
 }
 
 #x-axis-menu h6{
@@ -80,7 +81,7 @@ h1 {
 
 #y-axis-menu {
   margin-top: 25px;
-  width: 205px;
+  width: 100%;
 }
 
 #y-axis-menu h6{
@@ -99,6 +100,11 @@ h1 {
 #y-axis-menu p:hover{
   color: #09a8fa;
   font-weight: bold;
+}
+
+#about {
+  margin-top: 75px;
+  font-size: 10px;
 }
 
 #right-col {
@@ -121,7 +127,8 @@ h1 {
 #explanation-text {
   padding-left: 12px;
   padding-right: 12px;
-  margin-top: 105px;
+  margin-top: 60px;
+  font-size: 14px;
 }
 
 #chart {
