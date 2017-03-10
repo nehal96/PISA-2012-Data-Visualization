@@ -103,7 +103,7 @@ h1 {
 }
 
 #about {
-  margin-top: 75px;
+  margin-top: 90px;
   font-size: 10px;
 }
 
@@ -128,6 +128,29 @@ h1 {
   padding-left: 12px;
   padding-right: 12px;
   margin-top: 60px;
+  font-size: 14px;
+}
+
+#legend {
+  display: block;
+  margin: auto;
+  position: absolute;
+}
+
+#legend svg{
+  position: absolute;
+  display: block;
+  margin: auto;
+  width: 200px;
+  height: 300px;
+  font-size: 12px;
+}
+
+.legendSize .legendLinear{
+  position: inherit;
+}
+
+.legendTitle {
   font-size: 14px;
 }
 

@@ -100,13 +100,6 @@ function draw(data) {
     interactive graph."
   ]
 
-  var cog_activation_def = [
-    "Teacher makes us reflect on the problem",
-    "Teacher asks us to decide on our own procedures for solving complex problems",
-    "Teacher helps us learn from mistakes",
-    "Teacher asks us to explain our solution"
-  ]
-
 
   // Change title, explanation text and axes for each step in navigation
 
@@ -148,7 +141,8 @@ function draw(data) {
         .style('opacity', '0')
         .style('transition', 'opacity 0.7s linear');
 
-      d3.classed('show', false)
+      d3.select("#menu")
+        .classed('show', false)
         .classed('hidden', true);
     }
 
@@ -393,18 +387,10 @@ function draw(data) {
               return d['Country'].replace(/ /g, '');
          })
          .attr('cy', function(d) {
-        //if (isNaN(d["Maths Score"]) || isNaN(d["Teachers' salaries"])) {
-        //    return null;
-        //} else {
               return math_score_scale(d["Maths Score"]);
-        //}
          })
          .attr('cx', function(d) {
-      //if (isNaN(d["Teachers' salaries"]) || isNaN(d["Maths Score"])) {
-      //    return null;
-      //} else {
               return teacher_salaries_scale(d["Teachers' salaries"]);
-      //}
          })
          .attr('r', function(d) {
             return d["Teachers' salaries"] == 0 ? 0 : radius(d['GDP per capita']);
@@ -501,6 +487,57 @@ function draw(data) {
           return d[xAxis] == 0 ? 0 : radius(d['GDP per capita']);
       });
   };
+
+
+  // Creating the legend
+  var sqrtSize = d3.scale.sqrt()
+                   .domain([0, 150000])
+                   .range([0, 30]);
+
+  d3.select("#legend")
+    .append('svg');
+
+  var legendSVG = d3.select("#legend svg");
+
+  legendSVG.append('g')
+           .attr('class', 'legendSize')
+           .attr('transform', 'translate(0, 60)')
+           .attr('fill', '#52616b')
+
+  var legendSize = d3.legend.size()
+                     .scale(sqrtSize)
+                     .cells([10000, 80000, 150000])
+                     .shape('circle')
+                     .shapePadding(15)
+                     .labelOffset(20)
+                     .orient('horizontal')
+                     .labels(["10k", "70k", "130k+"])
+                     .title("GDP per Capita")
+
+  legendSVG.select(".legendSize")
+           .call(legendSize);
+
+  var color_scale = d3.scale.linear()
+                      .domain([1, 2])
+                      .range([d3.rgb('#3498DB'), d3.rgb('#ff9a00')])
+
+  legendSVG.append('g')
+           .attr('class', 'legendLinear')
+           .attr('transform', 'translate(0, 200)')
+
+  var legendColor = d3.legend.color()
+                      .shapeWidth(55)
+                      .orient('horizontal')
+                      .shape("path", d3.svg.symbol().type("circle").size(1200)())
+                      .cells([1, 2])
+                      .shapePadding(40)
+                      .labelOffset(20)
+                      .labels(["OECD", "non-OECD"])
+                      .scale(color_scale)
+                      .title('Country Affiliation')
+
+  legendSVG.select(".legendLinear")
+           .call(legendColor);
 
 };
 
