@@ -23,52 +23,6 @@
   fill: #C0C0C0;
 }
 
-#navigation {
-  position: absolute;
-  top: 70px;
-  left: 250px;
-  width: 800px;
-}
-
-#navigation #prev {
-	float: left;
-	width: 30px;
-	height: 30px;
-	background-image:url("../images/prev_light.png");
-
-}
-
-#navigation #next {
-	float: left;
-	width: 30px;
-	height: 30px;
-	margin-left:10px;
-	background-image:url("../images/next.png");
-}
-
-#menu {
-  position: absolute;
-  top: 160px;
-  left: 15px;
-  width: 120px;
-  text-align: left;
-  opacity:1;
-  transition:opacity 1s linear;
-}
-
-ul {
-  list-style: none;
-  font-size: 12px;
-  padding: 0;
-  margin-top: 3px;
-}
-
-li {
-  cursor: pointer;
-  padding-bottom: 5px;
-  font-weight: 100%;
-}
-
 #tooltip {
   position: absolute;
   width: 200px;

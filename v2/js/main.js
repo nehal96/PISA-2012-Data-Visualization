@@ -15,88 +15,6 @@ function draw(data) {
     .text("PISA 2012: How valuable are our teachers?");
 
 
-  // Building menus
-  var xAxisOptions = ["Teachers' salaries (% GDP per capita)",
-                      "Certified teachers (%)",
-                      "Teachers with secondary education (%)"];
-
-  var yAxisOptions = ["Maths Score",
-                      "Reading Score",
-                      "Science Score"];
-
-  d3.select("#x-axis-menu")
-    .selectAll('li')
-    .data(xAxisOptions)
-    .enter()
-    .append('li')
-    .text(function(d) {
-        return d;
-    });
-
-  d3.select("#y-axis-menu")
-    .selectAll('li')
-    .data(yAxisOptions)
-    .enter()
-    .append('li')
-    .text(function(d) {
-        return d;
-    });
-
-
-  // Building navigation
-  var menuOption = 0
-
-  d3.select('#navigation #prev')
-    .on('click', function() {
-        if (menuOption > 0) {
-            menuOption -= 1;
-        }
-        if (menuOption == 0) {
-            d3.select('#navigation #prev')
-              .style('background-image', 'url("images/prev_light.png")')
-        }
-        if (menuOption == 1) {
-            d3.select('#navigation #next')
-              .style('background-image', 'url("images/next.png")')
-        }
-        //navigation();
-    })
-    .on('mouseover', function() {
-        if (menuOption > 0) {
-              d3.select('#navigation #prev')
-                .style('cursor', 'pointer');
-        } else {
-          d3.select('#navigation #prev')
-            .style('cursor', 'default');
-        }
-    });
-
-  d3.select('#navigation #next')
-    .on('click', function() {
-        if (menuOption < 2) {
-            menuOption += 1;
-            //navigation();
-        }
-        if (menuOption == 2) {
-            d3.select('#navigation #next')
-              .style('background-image', 'url("images/next_light.png")')
-        }
-        if (menuOption == 1) {
-            d3.select('#navigation #prev')
-              .style('background-image', 'url("images/prev.png")')
-        }
-    })
-    .on('mouseover', function() {
-        if (menuOption < 2) {
-            d3.select('#navigation #next')
-              .style('cursor', 'pointer');
-        } else {
-            d3.select('#navigation #next')
-            .style('cursor', 'default');
-        }
-    });
-
-
   // Initializing tooltip as 'hidden'
   d3.select('#tooltip')
     .classed('hidden', true);
@@ -201,18 +119,10 @@ function draw(data) {
               return d['Country'].replace(/ /g, '');
          })
          .attr('cy', function(d) {
-        //if (isNaN(d["Maths Score"]) || isNaN(d["Teachers' salaries"])) {
-        //    return null;
-        //} else {
               return math_score_scale(d["Maths Score"]);
-        //}
          })
          .attr('cx', function(d) {
-      //if (isNaN(d["Teachers' salaries"]) || isNaN(d["Maths Score"])) {
-      //    return null;
-      //} else {
               return teacher_salaries_scale(d["Teachers' salaries"]);
-      //}
          })
          .attr('r', function(d) {
             return d["Teachers' salaries"] == 0 ? 0 : radius(d['GDP per capita']);
@@ -226,7 +136,7 @@ function draw(data) {
          })
          .style('cursor', 'pointer')
 
-         // Mouse over functions that change border and displays Country name
+         // Mouse over functions that change border and displays info box
          .on('mouseover', function(d) {
               d3.select(this)
                 .transition()
