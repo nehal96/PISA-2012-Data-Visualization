@@ -146,8 +146,12 @@ h1 {
   font-size: 12px;
 }
 
-.legendSize .legendLinear{
+.legendSize {
   position: inherit;
+}
+
+.legendLinear text{
+  fill: #52616b;
 }
 
 .legendTitle {
