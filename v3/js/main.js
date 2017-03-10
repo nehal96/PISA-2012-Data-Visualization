@@ -23,24 +23,6 @@ function draw(data) {
                       "Reading Score",
                       "Science Score"];
 
-  d3.select("#x-axis-menu")
-    .selectAll('li')
-    .data(xAxisOptions)
-    .enter()
-    .append('li')
-    .text(function(d) {
-        return d;
-    });
-
-  d3.select("#y-axis-menu")
-    .selectAll('li')
-    .data(yAxisOptions)
-    .enter()
-    .append('li')
-    .text(function(d) {
-        return d;
-    });
-
 
   // Navigation titles and explanations
   var nav_titles = [
@@ -49,21 +31,12 @@ function draw(data) {
     "3. Teachers' Education Level"
   ]
 
-  var explanation_text = [
-    "Teachers' salaries have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
-    "Teachers' certifications have some sort of impact on Maths Scores, this is sample text. Lorem ipsum.",
-    "Teachers' education level have some sort of impact on Maths Scores, this is sample text. Lorem ipsum."
-  ]
-
 
   // Building navigation
   var menuOption = 0
 
   d3.select("#plot-title h4")
     .text(nav_titles[menuOption]);
-
-  d3.select("#explanation-text p")
-    .text(explanation_text[menuOption]);
 
   d3.select('#navigation #prev-button')
     .on('click', function() {
@@ -120,9 +93,6 @@ function draw(data) {
   function navigation(d) {
     d3.select("#plot-title h4")
       .text(nav_titles[menuOption]);
-
-    d3.select("#explanation-text p")
-      .text(explanation_text[menuOption]);
 
     if (menuOption == 0) {
       xAxis = xAxisOptions[0];
@@ -308,18 +278,10 @@ function draw(data) {
               return d['Country'].replace(/ /g, '');
          })
          .attr('cy', function(d) {
-        //if (isNaN(d["Maths Score"]) || isNaN(d["Teachers' salaries"])) {
-        //    return null;
-        //} else {
               return math_score_scale(d["Maths Score"]);
-        //}
          })
          .attr('cx', function(d) {
-      //if (isNaN(d["Teachers' salaries"]) || isNaN(d["Maths Score"])) {
-      //    return null;
-      //} else {
               return teacher_salaries_scale(d["Teachers' salaries"]);
-      //}
          })
          .attr('r', function(d) {
             return d["Teachers' salaries"] == 0 ? 0 : radius(d['GDP per capita']);
