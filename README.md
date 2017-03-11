@@ -157,4 +157,15 @@ Under Construction! :construction::warning:
 
 ## Resources
 
-Under Construction! :construction::warning:
+* [PISA 2012 Database](http://www.oecd.org/pisa/pisaproducts/pisa2012database-downloadabledata.htm)
+* [PISA 2012 Results: What Students Know and Can Do (Volume I) [PDF]](https://www.google.ae/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjH857r3c7SAhWESRoKHYylA7AQFggYMAA&url=https%3A%2F%2Fwww.oecd.org%2Fpisa%2Fkeyfindings%2Fpisa-2012-results-volume-I.pdf&usg=AFQjCNEbLUh4ptHE9rKVhaU9IiQnfruh7A&sig2=S1rf3P3LjzSWyWOzAjDOWQ&bvm=bv.149397726,d.d2s)
+* [PISA 2012 Results: Ready to Learn (Volume III) [PDF]](https://www.google.ae/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjelrGh3s7SAhVHrRoKHVrNDKoQFggYMAA&url=https%3A%2F%2Fwww.oecd.org%2Fpisa%2Fkeyfindings%2Fpisa-2012-results-volume-III.pdf&usg=AFQjCNGsfRxtL5gYydJ9f69fhRrPfnGPSw&sig2=Or1NsHzcVfVG33Ca8qU7ZQ&bvm=bv.149397726,d.d2s)
+* [PISA 2012 Results: What Makes Schools Successful (Volume IV) [PDF]](https://www.google.ae/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjlk9C43s7SAhXFXRoKHZ3MCbcQFggYMAA&url=https%3A%2F%2Fwww.oecd.org%2Fpisa%2Fkeyfindings%2Fpisa-2012-results-volume-IV.pdf&usg=AFQjCNEstELODVwtQ8WaIgh_K1ti8YK2dQ&sig2=s1tIeG4RBS1bxjvwKfmZVg&bvm=bv.149397726,d.d2s)
+* [Raúl Peralta GitHub Repo](https://github.com/raul-p/pisa2012)
+* [Gapminder Wealth and Health of Nations](http://www.gapminder.org/world/#$majorMode=chart$is;shi=t;ly=2003;lb=f;il=t;fs=11;al=30;stl=t;st=t;nsl=t;se=t$wst;tts=C$ts;sp=5.59290322580644;ti=2013$zpv;v=0$inc_x;mmid=XCOORDS;iid=phAwcNAVuyj1jiMAkmq1iMg;by=ind$inc_y;mmid=YCOORDS;iid=phAwcNAVuyj2tPLxKvvnNPA;by=ind$inc_s;uniValue=8.21;iid=phAwcNAVuyj0XOoBL_n5tAQ;by=ind$inc_c;uniValue=255;gid=CATID0;by=grp$map_x;scale=log;dataMin=194;dataMax=96846$map_y;scale=lin;dataMin=23;dataMax=86$map_s;sma=49;smi=2.65$cd;bd=0$inds=;example=75)
+* [Wealth and Health of Nations Recreation](https://bost.ocks.org/mike/nations/)
+* [Bootstrap + D3 Example](http://output.jsbin.com/aqajoy/11)
+* [Learning D3 Part 3: Animation & Interaction](http://synthesis.sbecker.net/articles/2012/07/10/learning-d3-part-3-animation-interaction)
+* [d3 API Reference](https://github.com/d3/d3-3.x-api-reference/blob/master/API-Reference.md)
+* [d3 Legend Library](http://d3-legend.susielu.com/)
+* Countless StackOverflow queries.
