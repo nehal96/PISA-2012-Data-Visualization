@@ -23,13 +23,13 @@ Once the theme was decided, the first step in the design process was to explore 
 
 The dataset is massive. With data from 510,000 students from 65 economies, and the data dictionary including 635 variables, the unzipped CSV file comes up to around 2.75GB. Thankfully, we don't need all the data, but we do need to go through the data dictionary and select the relevant variables (i.e. those pertaining to teachers and teaching).
 
-<img src="https://i.imgsafe.org/3b5d968cfb.jpg" width="350" height="500">
+<img src="https://i.imgsafe.org/3b5d968cfb.jpg" width="500" height="700">
 
-<img src="https://i.imgsafe.org/3b5db2b174.jpg" width="350" height="500">
+<img src="https://i.imgsafe.org/3b5db2b174.jpg" width="500" height="700">
 
 From this huge list, I narrowed it down to a select few that I felt would be best for this data visualization.
 
-![](https://i.imgsafe.org/3b98ac9f28.jpg)
+<img src="https://i.imgsafe.org/3b98ac9f28.jpg" width="500" height="700">
 
 My final list of features were:
 
@@ -51,7 +51,7 @@ My final list of features were:
 
 Now that the outline of the visualization is done, it's time to create Version 1! First, I made a quick sketch of what I wanted to do:
 
-![](https://i.imgsafe.org/3be5e811b2.jpg)
+<img src="https://i.imgsafe.org/3be5e811b2.jpg" width="1000" height="200">
 
 The plan was to make a simple scatter plot of Teachers salaries (% of GDP per capita) vs Maths Scores, with red circles representing the countries. I also wanted some interactivity and a way for the user to know which country lied where, so I planned on a hover function that displayed the country name on the top left corner when the cursor hovered over a circle. This is what I came up with:
 
@@ -75,7 +75,7 @@ The countries with 0 on the x-axis are actually countries without teacher salary
 
 Here is my quick plan for Version 2:
 
-![](https://i.imgsafe.org/3ca275d75c.jpg)
+<img src="https://i.imgsafe.org/3ca275d75c.jpg" width="1000" height="400">
 
 A summary of the features I finally added/changed:
 
