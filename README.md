@@ -23,9 +23,9 @@ Once the theme was decided, the first step in the design process was to explore 
 
 The dataset is massive. With data from 510,000 students from 65 economies, and the data dictionary including 635 variables, the unzipped CSV file comes up to around 2.75GB. Thankfully, we don't need all the data, but we do need to go through the data dictionary and select the relevant variables (i.e. those pertaining to teachers and teaching).
 
-![](https://i.imgsafe.org/3b5d968cfb.jpg)
+<img src="https://i.imgsafe.org/3b5d968cfb.jpg" width="350" height="500">
 
-![](https://i.imgsafe.org/3b5db2b174.jpg)
+<img src="https://i.imgsafe.org/3b5db2b174.jpg" width="350" height="500">
 
 From this huge list, I narrowed it down to a select few that I felt would be best for this data visualization.
 
