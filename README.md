@@ -55,7 +55,7 @@ Now that the outline of the visualization is done, it's time to create Version 1
 
 The plan was to make a simple scatter plot of Teachers salaries (% of GDP per capita) vs Maths Scores, with red circles representing the countries. I also wanted some interactivity and a way for the user to know which country lied where, so I planned on a hover function that displayed the country name on the top left corner when the cursor hovered over a circle. This is what I came up with:
 
-![](https://i.imgsafe.org/3c22f9bfb3.png)
+![](https://i.imgsafe.org/3fcdb3422b.png)
 
 [Click here](https://nehal96.github.io/PISA-2012-Data-Visualization/v1/) to view Version 1!
 
@@ -88,7 +88,7 @@ A summary of the features I finally added/changed:
 
 This is what it looks like:
 
-![](https://i.imgsafe.org/3cbe12015a.png)
+![](https://i.imgsafe.org/3fd6921988.png)
 
 [Click here](https://nehal96.github.io/PISA-2012-Data-Visualization/v2/) to view Version 2!
 
@@ -119,7 +119,7 @@ Here's a summary of updates from Version 2:
 
  Here's what it looks like:
 
-![](https://i.imgsafe.org/3f04875023.png)
+![](https://i.imgsafe.org/3fdea1a6e1.png)
 
 [Click here](https://nehal96.github.io/PISA-2012-Data-Visualization/v3/) to view Version 3!
 
