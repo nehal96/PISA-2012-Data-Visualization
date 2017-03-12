@@ -13,7 +13,9 @@
 
 ## Summary
 
-This is an interactive data visualization of teacher survey data from the Programme for International Student Assessment (PISA), a worldwide study by the OECD. The data visualization shows the correlation between various factors for teachers, namely salaries, education level, style of teaching and school climate, from 65 economies. Each plot contains a corresponding text that explains any correlations and any differences between OECD and non-OECD countries.
+The Programme for International Student Assessment is a triennial international survey which aims to evaluate education systems worldwide by testing the skills and knowledge of 15-year-old students from 65 economies.
+
+This project aims to create an interactive data visualization of teacher survey data from PISA 2012. The data visualization shows the correlation between various factors for teachers, namely salaries, education level, style of teaching and school climate, and maths scores. Each plot contains a corresponding text that explains any correlations and any differences between OECD and non-OECD countries.
 
 ## Design
 
@@ -53,7 +55,7 @@ Now that the outline of the visualization is done, it's time to create Version 1
 
 <img src="https://i.imgsafe.org/3be5e811b2.jpg" width="1000" height="200">
 
-The plan was to make a simple scatter plot of Teachers salaries (% of GDP per capita) vs Maths Scores, with red circles representing the countries. I also wanted some interactivity and a way for the user to know which country lied where, so I planned on a hover function that displayed the country name on the top left corner when the cursor hovered over a circle. This is what I came up with:
+The plan was to make a simple scatter plot of Teachers salaries (% of GDP per capita) vs Maths Scores, with red circles representing the countries. Displaying teachers salaries in percentage of GDP per capita is important because it takes into account the fact that different countries have different costs of living (and thus a higher salary need not necessarily mean a better standard of living). I also wanted some interactivity and a way for the user to know which country lied where, so I planned on a hover function that displayed the country name on the top left corner when the cursor hovered over a circle. This is what I came up with:
 
 ![](https://i.imgsafe.org/3fcdb3422b.png)
 
@@ -69,7 +71,7 @@ Since this was just a midpoint to my idea, I thought I'd ask my parents what the
 > * How do I find out the exact numbers of Maths Scores?
 > * Teachers' salaries as % of GDP per capita is difficult to comprehend.
 
-The countries with 0 on the x-axis are actually countries without teacher salary data, and I had kept them because I wanted users to know that those countries were part of the the plot. However, by assigning the value 0 to them, that information (missing data) is not conveyed, and it *is* misleading. I agreed with the rest of the points, and applied the advice in Version 2.
+The countries with 0 on the x-axis are actually countries without teacher salary data, and I had kept them because I wanted users to know that those countries were part of the the plot. However, by assigning the value 0 to them, that information (missing data) is not conveyed, and it *is* misleading. I agreed with the rest of the points, and applied the advice, as well as my own ideas, in Version 2.
 
 ### v2
 
@@ -98,6 +100,8 @@ To take my project one level higher, I decided to ask my web developer friend fo
 
 > * Don't manually enter the pixel values! Use Bootstrap's FlexGrid system to organize the layout of the page.
 > * The tooltip and country name display do the same thing, so there's no need for two. The tooltip looks better and is more useful.
+> * Speaking of the tooltip, the information is all squished together and it's kind of hard to figure out what it's saying. It would look better if it was more spaced out maybe.
+> * It would look better if there was a bigger gap between the title and the plot. Bootstrap should help you with that.
 
 She introduced me to Bootstrap to organize the front-end framework and also deal with browser compatibility and viewing on different screen sizes (which would most certainly obfuscate my plot).
 
@@ -111,11 +115,13 @@ Here's a summary of updates from Version 2:
 
 * Reorganized into Bootstrap framework
 * Larger and bolder title
+* New design and color scheme.
 * Bolder axes titles
 * Two new plots: Teachers with certification (%) and Teachers with Secondary Education (%).
 * The plots can be viewed by clicking the next button (and go back with the previous button), and the animated circles will slide across the chart to their new positions.
-* The axes update with a neat animation.
+* The axes update with a neat animated transition.
 * Navigation title to know the content of the plot.
+* Tooltip information is more spaced and organized to allow easier reading of the information. Also, the background color has been changed to fit the color scheme.
 
  Here's what it looks like:
 
@@ -126,17 +132,31 @@ Here's a summary of updates from Version 2:
 
 #### Feedback
 
-> It's awesome!
+> * Why are some circles blue while others yellow? I don't know what the colors stand for.
+> * I was trying to find Canada and it took me a really long time to go through all the countries individually. It would be awesome if there was like a search bar where I could type in 'Canada', or any country's name, and it would show me where on the graph it was.
 
-Under Construction! :construction::warning:
+I completely forgot about adding a legend, so that definitely has to go. The search bar is a fantastic idea, I never really thought about the need to follow one country (I guess you'd be more interested about say, the country you're from), and having a search bar solves that. Also, the search bar would have to narrow down as the user types in what he/she is looking for because not all countries in the world are a part of PISA. Onto Version 4!
 
 ### Final Version (v4)
 
+This is the sketch I came up with in between that has all the design elements I wanted for this visualization (I added the search bar later):
+
+![](https://i.imgsafe.org/51fd4d3248.jpg)
+
 This version has all the elements in my final design for the data visualization, and has made improvements according to any relevant feedback and advice from previous versions.
+
+There are a few changes I made to this design sketch, namely:
+
+* The color legend is no longer 'Regions' and I've stuck with 'Country Affiliation' (OECD or non-OECD) because it fits my narrative better.
+* The x-axis options are different (see summary of updates).
+* As a result, the title has also been changed.
+* The implementation of the search bar was more challenging than I imagined, and I could not add it successfully. I will implement it once I am more skilled in working with d3.
+
 
 A summary of the updates from Version 3:
 
-* Changed the number of plots in the visualization. Teacher Certification (%) has been removed, Teachers Use of Cognitive Activation and School Climate have been added.
+* Changed the number of plots in the visualization. Teacher Certification (%) has been removed because the data is very similar to the secondary education one and doesn't provide any meaningful relationships. Teachers Use of Cognitive Activation and School Climate have been added.
+* The title has changed to *PISA 2012: The Value of Teachers and School Climate* to reflect the addition of plots.
 * The last plot is a 'Try It Yourself' section, where the user can select the x- and y-axes themselves (Reading Score and Science Score has been added). The menu for the axes appears only in this section, and disappears when the user clicks 'previous' and goes backwards.
 * Each plot has its own short explanation on the right.
 * There are two legends - one for circle size, and one for circle color - on the bottom-right.
@@ -152,7 +172,7 @@ Here's the 'Try It Yourself' section:
 
 #### Feedback
 
-Under Construction! :construction::warning:
+No more new ideas.
 
 
 ## Resources
@@ -165,6 +185,7 @@ Under Construction! :construction::warning:
 * [Gapminder Wealth and Health of Nations](http://www.gapminder.org/world/#$majorMode=chart$is;shi=t;ly=2003;lb=f;il=t;fs=11;al=30;stl=t;st=t;nsl=t;se=t$wst;tts=C$ts;sp=5.59290322580644;ti=2013$zpv;v=0$inc_x;mmid=XCOORDS;iid=phAwcNAVuyj1jiMAkmq1iMg;by=ind$inc_y;mmid=YCOORDS;iid=phAwcNAVuyj2tPLxKvvnNPA;by=ind$inc_s;uniValue=8.21;iid=phAwcNAVuyj0XOoBL_n5tAQ;by=ind$inc_c;uniValue=255;gid=CATID0;by=grp$map_x;scale=log;dataMin=194;dataMax=96846$map_y;scale=lin;dataMin=23;dataMax=86$map_s;sma=49;smi=2.65$cd;bd=0$inds=;example=75)
 * [Wealth and Health of Nations Recreation](https://bost.ocks.org/mike/nations/)
 * [Bootstrap + D3 Example](http://output.jsbin.com/aqajoy/11)
+* [Interactive Data Visualization For The Web](http://chimera.labs.oreilly.com/books/1230000000345/ch09.html)
 * [Learning D3 Part 3: Animation & Interaction](http://synthesis.sbecker.net/articles/2012/07/10/learning-d3-part-3-animation-interaction)
 * [d3 API Reference](https://github.com/d3/d3-3.x-api-reference/blob/master/API-Reference.md)
 * [d3 Legend Library](http://d3-legend.susielu.com/)
