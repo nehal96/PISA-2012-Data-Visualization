@@ -77,7 +77,7 @@ The countries with 0 on the x-axis are actually countries without teacher salary
 
 Here is my quick plan for Version 2:
 
-<img src="https://i.imgsafe.org/3ca275d75c.jpg" width="1000" height="400">
+<img src="https://i.imgsafe.org/3ca275d75c.jpg" width="800" height="450">
 
 A summary of the features I finally added/changed:
 
@@ -168,11 +168,6 @@ A summary of the updates from Version 3:
 Here's the 'Try It Yourself' section:
 
 ![](https://i.imgsafe.org/3f2bd3597e.png)
-
-
-#### Feedback
-
-No more new ideas.
 
 
 ## Resources
