@@ -169,6 +169,8 @@ Here's the 'Try It Yourself' section:
 
 ![](https://i.imgsafe.org/3f2bd3597e.png)
 
+[Click here](https://nehal96.github.io/PISA-2012-Data-Visualization/v4/) to view **Version 4 (Final Version)**!
+
 
 ## Resources
 
