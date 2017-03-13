@@ -86,16 +86,16 @@ function draw(data) {
   ]
 
   var explanation_text = [
-    "Except for Chile and Malaysia, OECD countries have a slight positive corelation between maths scores and teachers' salaries.\
+    "Except for Chile and Malaysia, OECD countries have a slight positive correlation between maths scores and teachers' salaries.\
     For non-OECD countries, with the exception of Qatar, poorer countries have low math scores, whereas the richer countries \
     like China and Singapore have high ones.",
     "It is heartening to see that most countries have teachers with a secondary education, with only 9 countries below the \
     70% mark. Surprisingly, that contains 5 OECD countries including France and Switzerland. Nevertheless, it is not a good \
     indicator of academic success.",
     "The Index of Cognitive Activation is defined as the average % of students who have answered 'agree' or 'strongly agree' \
-    to whether the teacher makes them reflect on problems and decide their own procedures, helps them learn from mistaks and \
-    asks them to explain their solution. Surprisingly, this reflective method of learning is negatively corelated with math scores.",
-    "Lots of students being late to school has a clear negative corelation with academic scores.",
+    to whether the teacher makes them reflect on problems and decide their own procedures, helps them learn from mistakes and \
+    asks them to explain their solution. Surprisingly, this reflective method of learning is negatively correlated with math scores.",
+    "Lots of students being late to school has a clear negative correlation with academic scores.",
     "Choose variables to see how various teaching and school climate factors affect students' academic performance in this \
     interactive graph."
   ]
@@ -456,6 +456,8 @@ function draw(data) {
                 .classed("hidden", false);
          });
 
+
+  // Update function that will allow chart changes based on the menu option the user clicks
   function updateMenu() {
     d3.select("#x-axis-menu")
       .selectAll('p')
@@ -470,6 +472,8 @@ function draw(data) {
       });
   }
 
+
+  // Update function that will update the chart as user goes through navigation/clicks menu option
   function updateChart(scales_dict, xAxis, yAxis) {
 
     d3.select('#plot')
